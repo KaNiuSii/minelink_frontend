@@ -1,0 +1,79 @@
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Use the full height of the viewport */
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Hide overflow from pseudo-element */
+    border-radius: 8px; /* Apply border radius here */
+  }
+  
+  .home-page-container::before {
+    content: '';
+    position: absolute;
+    top: -100%; /* Extend beyond the container to cover edges during rotation */
+    left: -50%;
+    right: -50%;
+    bottom: -100%;
+    background-image: url('./bg-clouds.png');
+    background-repeat: repeat;
+    background-size: cover;
+    animation: gentleRotate 360s linear infinite, gentleMove 10s linear infinite;
+    filter: blur(1px); /* Apply blur to the background only */
+    z-index: -1; /* Position behind the form content */
+    border-radius: inherit; /* Inherit border-radius from parent */
+  }
+  
+  .form-container {
+    width: 100%;
+    max-width: 600px; /* Adjust the max-width as needed */
+    background-color: #f8f9fa;
+    padding: 5%;
+    z-index: 1; /* Higher z-index than pseudo-element */
+    position: relative; /* Ensure it's above the pseudo-element */
+    border-radius: 48px;
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .message-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .success-message {
+    color: #28a745; /* Green color for success messages */
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: #dc3545; /* Red color for error messages */
+    font-weight: bold;
+  }
+
+  @keyframes gentleRotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Keyframes for gentle movement */
+  @keyframes gentleMove {
+    0%, 100% {
+      background-position: center;
+    }
+    50% {
+      background-position: calc(center + 1%) calc(center + 1%);
+    }
+  }

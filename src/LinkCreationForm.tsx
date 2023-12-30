@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './LinkCreationForm.css';
 
 interface LinkCreationFormProps {
     onFormSubmit: (data: { name: string }) => void;

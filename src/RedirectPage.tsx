@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './RedirectPage.css';
 
 export const RedirectPage: React.FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -29,11 +30,14 @@ export const RedirectPage: React.FC = () => {
   }, [name]);
 
   return (
-    <div>
+    <div className="redirect-page-container">
       {errorMessage ? (
-        <div>{errorMessage}</div>
+        <div className="message">{errorMessage}</div>
       ) : (
-        <div>Redirecting...</div>
+        <div>
+          <div className="spinner"></div>
+          <div className="message">Redirecting...</div>
+        </div>
       )}
     </div>
   );
