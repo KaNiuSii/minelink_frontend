@@ -3,7 +3,7 @@ import './LinkCreationForm.css';
 
 interface LinkCreationFormProps {
     onFormSubmit: (data: { name: string }) => void;
-    onError: (error: string) => void; // Add this line
+    onError: (error: string) => void;
 }
 
 export const LinkCreationForm: React.FC<LinkCreationFormProps> = ({ onFormSubmit, onError }) => {
@@ -24,7 +24,7 @@ export const LinkCreationForm: React.FC<LinkCreationFormProps> = ({ onFormSubmit
             if (!response.ok) {
                 const errorData = await response.json();
                 console.error('Error:', errorData.message || 'An error occurred');
-                onError(errorData.message || 'An error occurred'); // Invoke the onError callback
+                onError(errorData.message || 'An error occurred');
                 return;
             }
 
@@ -33,7 +33,7 @@ export const LinkCreationForm: React.FC<LinkCreationFormProps> = ({ onFormSubmit
             onFormSubmit(data);
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
-            onError('An unexpected error occurred'); // Handle fetch errors
+            onError('An unexpected error occurred');
         }
     };
   
